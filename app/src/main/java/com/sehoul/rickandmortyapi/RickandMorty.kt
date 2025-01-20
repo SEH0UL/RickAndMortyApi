@@ -50,6 +50,7 @@ class RickandMorty : AppCompatActivity() {
 
         }
     }
+    // ESTO ES SOLO PARA HACRE PRUBEA
 
     // ASJDHKASDJ
     private fun getRetrofit(): Retrofit {
