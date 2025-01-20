@@ -5,7 +5,7 @@ plugins {
 
 android {
     namespace = "com.sehoul.rickandmortyapi"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "com.sehoul.rickandmortyapi"
@@ -31,7 +31,7 @@ android {
         targetCompatibility = JavaVersion.VERSION_11
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "11"
     }
     buildFeatures{
         viewBinding = true   //Además, hay que darle a sincronizar

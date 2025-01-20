@@ -12,8 +12,9 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class RickandMorty : AppCompatActivity() {
+class MainActivity : AppCompatActivity() {
 
+    // VAS POR LA DIAPOSITIVA 42
     private lateinit var binding: ActivityMainBinding
     private lateinit var retrofit: Retrofit
 
@@ -43,8 +44,11 @@ class RickandMorty : AppCompatActivity() {
             // evaluando si la respuesta ha tenido éxito.
             if (myResponse.isSuccessful) {
                 Log.i("Consulta", "Funciona :)")
+                val response: RickandMortyDataResponse? = myResponse.body()
+                if (response != null) {
+                    Log.i("Cuerpo de la consulta", response.toString())
+                }
             } else {
-                Log.i("Consulta", "No funciona :(")
                 Log.i("Consulta", "No funciona :(")
             }
 
