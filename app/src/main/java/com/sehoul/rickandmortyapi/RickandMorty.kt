@@ -52,7 +52,6 @@ class RickandMorty : AppCompatActivity() {
     }
 
 
-
     private fun getRetrofit(): Retrofit {
         return Retrofit.Builder()
             .baseUrl("https://rickandmortyapi.com/")
