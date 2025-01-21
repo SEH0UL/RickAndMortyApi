@@ -13,9 +13,9 @@ interface ApiService {
 // Usamos @Query en lugar de @Path porque 'name' es un parámetro de consulta
     @GET("api/character/")
     suspend fun getRickandMorty(@Query("name") rickandmortyName: String): Response<RickandMortyDataResponse>
-//
-//    @GET("api/{id}")
-//    suspend fun getRickandMortyDetail(@Path("id") rickandmortyId:Int):Response<RickandMortyDatailResponse>
+
+    @GET("api/character/")
+    suspend fun getRickandMortyDetail(@Path("id") rickandmortyId:Int):Response<RickandMortyDataResponse>
 
 
 }
