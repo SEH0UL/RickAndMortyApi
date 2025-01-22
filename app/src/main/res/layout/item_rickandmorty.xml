@@ -2,36 +2,43 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="200dp"
-    android:layout_marginHorizontal="16dp"
-    android:layout_marginVertical="8dp"
-    app:cardCornerRadius="22dp"
+    android:layout_width="350dp"
+    android:layout_height="700dp"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="16dp"
     app:cardElevation="8dp">
 
-    <ImageView
-        android:id="@+id/ivCharacter"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:scaleType="centerCrop" />
+        android:layout_height="match_parent">
 
-    <FrameLayout
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:layout_gravity="bottom">
+        <ImageView
+            android:id="@+id/ivCharacter"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            android:scaleType="centerCrop" />
 
         <TextView
             android:id="@+id/tvRickMortyName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_below="@id/ivCharacter"
+            android:layout_marginTop="8dp"
             android:gravity="center"
-            android:background="@color/violet35"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            tools:text="CHARACTER" />
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    </FrameLayout>
+        <TextView
+            android:id="@+id/tvRickMortyStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tvRickMortyName"
+            android:layout_marginTop="4dp"
+            android:gravity="center"
+            android:textColor="#84E949"
+            android:textSize="16sp" />
 
+    </RelativeLayout>
 
 </androidx.cardview.widget.CardView>

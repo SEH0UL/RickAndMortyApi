@@ -4,11 +4,11 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 
-class RickandMortyAdapter( var RickandMortyList: List<RickandMortyItemResponse> = emptyList()) : RecyclerView.Adapter<RickandMortyViewHolder>() {
+class RickandMortyAdapter( var RickandMortyList: List<RickandMortyDataResponse> = emptyList()) : RecyclerView.Adapter<RickandMortyViewHolder>() {
 
 
-    fun updateList(list: List<RickandMortyItemResponse>) {
-        RickandMortyList = list
+    fun updateList(list: RickandMortyDataResponse) {
+        RickandMortyList = listOf(list)
         notifyDataSetChanged()
     }
 

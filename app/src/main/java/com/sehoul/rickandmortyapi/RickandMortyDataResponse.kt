@@ -10,7 +10,7 @@ data class RickandMortyDataResponse(
     @SerializedName("gender") val gender: String,
     @SerializedName("origin") val origin: RickandMortyOriginResponse,
     @SerializedName("location") val location: RickandMortyLocationResponse,
-    @SerializedName("image") val image: String,
+    @SerializedName("image") val imageCharacter: String,
     @SerializedName("url") val url: String,
 )
 

@@ -53,6 +53,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
+    //Picasso
+    implementation (libs.picasso)
 
 }
 

@@ -39,34 +39,43 @@ class MainActivity : AppCompatActivity() {
 
             override fun onQueryTextChange(newText: String?) = false
         })
-        adapter = RickandMortyAdapter ()
-        binding.rvCharacterRickMorty.setHasFixedSize(true)
-        binding.rvCharacterRickMorty.layoutManager = LinearLayoutManager(this)
-        binding.rvCharacterRickMorty.adapter = adapter
 
+        adapter = RickandMortyAdapter()
+        binding.rvCharacterRickMorty.apply {
+            setHasFixedSize(true)
+            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+            adapter = this@MainActivity.adapter
+        }
     }
 
     private fun searchByName(query: String) {
         binding.progressBar.isVisible = true
         CoroutineScope(Dispatchers.IO).launch {
-            val myResponse: Response<RickandMortyDataResponse> =
-                retrofit.create(ApiService::class.java).getRickandMorty(query)
-            // evaluando si la respuesta ha tenido éxito.
-            if (myResponse.isSuccessful) {
-                Log.i("Consulta", "Funciona :)")
-                val response: RickandMortyDataResponse? = myResponse.body()
-                if (response != null) {
-                    Log.i("Cuerpo de la consulta", response.toString())
-                    adapter.updateList(response.name)
-                    runOnUiThread {
-                        binding.progressBar.isVisible = false
-                    }
+            val apiService = retrofit.create(ApiService::class.java)
 
-                }
+            // Si query es un número, busca por ID; si es texto, busca por nombre.
+            val myResponse: Response<RickandMortyDataResponse> = if (query.toIntOrNull() != null) {
+                // Si el query es un número, buscamos por ID
+                apiService.getRickandMortyDetail(query.toInt().toString())
             } else {
-                Log.i("Consulta", "No funciona :(")
+                // Si no, buscamos por nombre
+                apiService.getRickandMortyDetail(query) // Usamos el método adecuado para buscar por nombre
             }
 
+            if (myResponse.isSuccessful) {
+                val response = myResponse.body()
+                response?.let {
+                    runOnUiThread {
+                        adapter.updateList(it) // Actualizamos la lista con los personajes encontrados
+                        binding.progressBar.isVisible = false
+                    }
+                }
+            } else {
+                runOnUiThread {
+                    binding.progressBar.isVisible = false
+                    Log.e("Error", "Búsqueda fallida: ${myResponse.message()}")
+                }
+            }
         }
     }
 
