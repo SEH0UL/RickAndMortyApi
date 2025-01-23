@@ -12,6 +12,9 @@ data class RickandMortyDataResponse(
     @SerializedName("location") val location: RickandMortyLocationResponse,
     @SerializedName("image") val imageCharacter: String,
     @SerializedName("url") val url: String,
+    @SerializedName("episode") val episode: List<String>
+
+
 )
 
 data class RickandMortyOriginResponse(

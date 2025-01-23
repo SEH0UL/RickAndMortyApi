@@ -3,42 +3,92 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="350dp"
-    android:layout_height="700dp"
+    android:layout_height="500dp"
     android:layout_margin="8dp"
-    app:cardCornerRadius="16dp"
-    app:cardElevation="8dp">
+    app:cardCornerRadius="24dp"
+    app:cardElevation="8dp"
+    android:background="#65C83A">
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
+        <!-- Imagen -->
         <ImageView
             android:id="@+id/ivCharacter"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="0dp"
+            android:layout_weight="1"
             android:scaleType="centerCrop" />
 
+        <!-- Nombre -->
         <TextView
             android:id="@+id/tvRickMortyName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/ivCharacter"
             android:layout_marginTop="8dp"
             android:gravity="center"
             android:textColor="@color/black"
-            android:textSize="18sp"
+            android:textSize="34sp"
             android:textStyle="bold" />
 
+        <!-- Status -->
         <TextView
             android:id="@+id/tvRickMortyStatus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/tvRickMortyName"
             android:layout_marginTop="4dp"
-            android:gravity="center"
-            android:textColor="#84E949"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
-    </RelativeLayout>
+        <!-- Species -->
+        <TextView
+            android:id="@+id/tvRickMortySpecies"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <!-- Gender -->
+        <TextView
+            android:id="@+id/tvRickMortyGender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <!-- Origin -->
+        <TextView
+            android:id="@+id/tvRickMortyOrigin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <!-- Location -->
+        <TextView
+            android:id="@+id/tvRickMortyLocation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+        <!-- Episodio -->
+        <TextView
+            android:id="@+id/tvRickMortyEpisodes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/black"
+            android:textSize="16sp" />
+
+
+    </LinearLayout>
 
 </androidx.cardview.widget.CardView>

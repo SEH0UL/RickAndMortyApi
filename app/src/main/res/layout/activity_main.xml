@@ -7,8 +7,18 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <!-- Hacemos una lupa-->
+    <!-- Imagen de fondo -->
+    <ImageView
+        android:id="@+id/backgroundImage"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView"
+        android:src="@drawable/portalbackground"
+        android:contentDescription="Back" />
 
+    <!-- Hacemos una lupa-->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchView"
         android:layout_width="0dp"
