@@ -43,7 +43,7 @@ class MainActivity : AppCompatActivity() {
         adapter = RickandMortyAdapter()
         binding.rvCharacterRickMorty.apply {
             setHasFixedSize(true)
-            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+            layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false) // Cambiado a orientación vertical
             adapter = this@MainActivity.adapter
         }
     }
@@ -53,31 +53,42 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.IO).launch {
             val apiService = retrofit.create(ApiService::class.java)
 
-            // Si query es un número, busca por ID; si es texto, busca por nombre.
-            val myResponse: Response<RickandMortyDataResponse> = if (query.toIntOrNull() != null) {
-                // Si el query es un número, buscamos por ID
-                apiService.getRickandMortyDetail(query.toInt().toString())
-            } else {
-                // Si no, buscamos por nombre
-                apiService.getRickandMortyDetail(query) // Usamos el método adecuado para buscar por nombre
-            }
-
-            if (myResponse.isSuccessful) {
-                val response = myResponse.body()
-                response?.let {
+            if (query.toIntOrNull() != null) {
+                // Caso: búsqueda por ID
+                val myResponse = apiService.getRickandMortyDetail(query.toInt().toString())
+                if (myResponse.isSuccessful) {
+                    val character = myResponse.body()
+                    character?.let {
+                        runOnUiThread {
+                            adapter.updateList(listOf(it)) // Convertimos el único resultado en una lista
+                            binding.progressBar.isVisible = false
+                        }
+                    }
+                } else {
                     runOnUiThread {
-                        adapter.updateList(it) // Actualizamos la lista con los personajes encontrados
                         binding.progressBar.isVisible = false
+                        Log.e("Error", "Búsqueda fallida por ID: ${myResponse.message()}")
                     }
                 }
             } else {
-                runOnUiThread {
-                    binding.progressBar.isVisible = false
-                    Log.e("Error", "Búsqueda fallida: ${myResponse.message()}")
+                // Caso: búsqueda por nombre
+                val nameResponse = apiService.searchCharacterByName(query)
+                if (nameResponse.isSuccessful) {
+                    val characterList = nameResponse.body()?.results ?: emptyList()
+                    runOnUiThread {
+                        adapter.updateList(characterList) // Actualizamos con la lista de resultados
+                        binding.progressBar.isVisible = false
+                    }
+                } else {
+                    runOnUiThread {
+                        binding.progressBar.isVisible = false
+                        Log.e("Error", "Búsqueda fallida por nombre: ${nameResponse.message()}")
+                    }
                 }
             }
         }
     }
+
 
 
     private fun getRetrofit(): Retrofit {
