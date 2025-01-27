@@ -6,89 +6,103 @@
     android:layout_height="500dp"
     android:layout_margin="8dp"
     app:cardCornerRadius="24dp"
-    app:cardElevation="8dp"
-    android:background="#65C83A">
+    app:cardElevation="8dp">
 
-    <LinearLayout
+    <!-- Usamos un FrameLayout para superponer elementos -->
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:padding="16dp">
+        android:layout_height="match_parent">
 
-        <!-- Imagen -->
+        <!-- Imagen de fondo -->
         <ImageView
-            android:id="@+id/ivCharacter"
+            android:id="@+id/backgroundImage"
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:scaleType="centerCrop" />
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/portalbackground"
+            android:contentDescription="Fondo_Cardview"
+            android:alpha="0.2" /> <!-- Ajusta la opacidad si es necesario -->
 
-        <!-- Nombre -->
-        <TextView
-            android:id="@+id/tvRickMortyName"
+        <!-- Contenido del CardView -->
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            android:gravity="center"
-            android:textColor="@color/black"
-            android:textSize="34sp"
-            android:textStyle="bold" />
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="16dp">
 
-        <!-- Status -->
-        <TextView
-            android:id="@+id/tvRickMortyStatus"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            <!-- Imagen -->
+            <ImageView
+                android:id="@+id/ivCharacter"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:scaleType="centerCrop" />
 
-        <!-- Species -->
-        <TextView
-            android:id="@+id/tvRickMortySpecies"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            <!-- Nombre -->
+            <TextView
+                android:id="@+id/tvRickMortyName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:gravity="center"
+                android:textColor="@color/black"
+                android:textSize="34sp"
+                android:textStyle="bold" />
 
-        <!-- Gender -->
-        <TextView
-            android:id="@+id/tvRickMortyGender"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            <!-- Status -->
+            <TextView
+                android:id="@+id/tvRickMortyStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-        <!-- Origin -->
-        <TextView
-            android:id="@+id/tvRickMortyOrigin"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            <!-- Species -->
+            <TextView
+                android:id="@+id/tvRickMortySpecies"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-        <!-- Location -->
-        <TextView
-            android:id="@+id/tvRickMortyLocation"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            <!-- Gender -->
+            <TextView
+                android:id="@+id/tvRickMortyGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-        <!-- Episodio -->
-        <TextView
-            android:id="@+id/tvRickMortyEpisodes"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/black"
-            android:textSize="16sp" />
+            <!-- Origin -->
+            <TextView
+                android:id="@+id/tvRickMortyOrigin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
+            <!-- Location -->
+            <TextView
+                android:id="@+id/tvRickMortyLocation"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
 
-    </LinearLayout>
+            <!-- Episodio -->
+            <TextView
+                android:id="@+id/tvRickMortyEpisodes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+        </LinearLayout>
 
+    </FrameLayout>
 </androidx.cardview.widget.CardView>
